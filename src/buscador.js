@@ -1,10 +1,10 @@
 const BuscadorModuleName = "buscador";
-
 import angular from "angular";
 import AjaxModuleName from "./ajax/ajax.module";
 import BookBoxModuleName from "./book-box/book-box.module";
 import SearchModuleName from "./search/search.module";
-//import "./index.scss";
+
+import "./index.scss";
 
 angular.module(BuscadorModuleName, [AjaxModuleName, BookBoxModuleName, SearchModuleName]);
 
