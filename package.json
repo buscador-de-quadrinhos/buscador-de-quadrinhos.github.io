@@ -1,0 +1,23 @@
+{
+  "name": "buscador-de-quadrinhos.github.io",
+  "version": "0.0.1",
+  "description": "Buscador de quadrinhos em promoção",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buscador-de-quadrinhos/buscador-de-quadrinhos.github.io.git"
+  },
+  "keywords": [
+    "buscador",
+    "quadrinhos"
+  ],
+  "author": "Teles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/buscador-de-quadrinhos/buscador-de-quadrinhos.github.io/issues"
+  },
+  "homepage": "https://github.com/buscador-de-quadrinhos/buscador-de-quadrinhos.github.io#readme"
+}
