@@ -8,7 +8,7 @@ Uma ferramenta para buscar quadrinhos em promoção.
 ## Para desenvolver
 
 - [Webpack](https://webpack.js.org/guides) (v3.5.5)
-    - [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) (v2.7.1)
+
     - [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement)
     - [Clean Webpack Plugin](https://github.com/johnagan/clean-webpack-plugin) (v0.1.16)
 - [ECMAScript 6](http://es6-features.org)
