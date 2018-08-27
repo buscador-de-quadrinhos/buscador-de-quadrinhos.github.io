@@ -3,6 +3,7 @@ const SaraivaBookAdapter = function SaraivaBookAdapter(data){
     const _getImageSrcByWidth = (width) => `${data.image.match(/.*pro_id=[0-9]*/g)[0]}&qld=90&l=${width}`;
 
     return {
+        id: data.id,
         name: data.name,
         images: {
             small: _getImageSrcByWidth(90),

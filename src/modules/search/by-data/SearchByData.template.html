@@ -1,0 +1,37 @@
+const SearchByDataTemplate = `
+
+<section>
+<form name="searchForm">
+<div class="field is-horizontal" data-ng-model-options="{ debounce: 600 }">
+  <div class="field has-addons is-horizontal">
+    <div class="control" style="width: 100%;">
+      <input list="names" data-ng-disabled="vc.vm.isLoading" type="text" class="input is-medium" placeholder="Procure por nome, descrição ou nome do autor." data-ng-model="vc.vm.filterData.searchValue" name="comicsBookName">
+      <datalist id="names">
+        <option value="{{ name }}" data-ng-repeat="name in vc.vm.dataList.name">
+      </datalist>
+    </div>
+    <div class="control">
+      <button  class="button is-link is-medium"
+               data-ng-click="vc.vm.search()"
+               data-ng-disabled="vc.vm.isLoading || searchForm.$pristine">&#x1F50E;</button>
+    </div>
+  </div>
+</div>
+  <div class="control">
+    <div class="tags has-addons">
+      <span class="tag">Ignorar filtro</span>
+      <span class="tag"
+            data-ng-class="vc.vm.shouldIgnoreFilters ? 'is-success' : 'is-danger'"
+            data-ng-click="vc.vm.shouldIgnoreFilters = !vc.vm.shouldIgnoreFilters">
+        {{vc.vm.shouldIgnoreFilters ? 'ON' : 'OFF' }}
+      </span>
+    </div>
+  </div>
+<div>
+
+
+</div>
+</form>
+</section>`;
+
+export default SearchByDataTemplate;

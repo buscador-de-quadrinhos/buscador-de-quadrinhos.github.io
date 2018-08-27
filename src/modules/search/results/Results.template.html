@@ -1,0 +1,23 @@
+const template = `
+    <div style="margin-top: 40px">
+        <p style="margin-bottom: 10px;">
+            <span class="title is-4">{{ vc.vm.loadingPercentage() }} %</span>
+            <span>|</span>
+            <span class="subtitle is-5">{{ vc.vm.loadingMessage()  }}</span>
+        </p>
+        <progress style="margin-bottom: 10px;" class="progress is-info" value="{{ vc.vm.pagesLoaded.length }}" max="{{vc.vm.lastPageNumber}}"></progress>
+        <p ng-pluralize count="filteredBooks.length"
+                      class="subtitle is-6"
+                      when="{'0': 'Nenhum quadrinho encontrado.',
+                     'one': '1 quadrinho encontrado.',
+                     'other': '{} quadrinhos encontrados.'}">
+        </p>
+        <div class="columns" style="flex-wrap: wrap;">
+            <div data-ng-repeat="book in vc.vm.books | filter: vc.vm.filterByData as filteredBooks" class="column is-6">
+                <book-box book="book"></book-box>
+            </div>
+        </div>
+    </div>
+`;
+
+export default template;
