@@ -16,6 +16,4 @@ angular.module(SearchModuleName).directive("searchByData", SearchByData);
 angular.module(SearchModuleName).controller("ResultsDirectiveController", ResultsDirectiveController);
 angular.module(SearchModuleName).directive("results", ResultsDirective);
 
-
-
 export default SearchModuleName;
