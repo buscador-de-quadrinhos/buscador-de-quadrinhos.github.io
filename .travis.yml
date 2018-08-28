@@ -14,10 +14,22 @@ before_script:
 script:
 - npm run test
 - codecov
+after_success:
+- mkdir deploy
+- cd .deploy
+- git clone --depth 1 --branch BRANCH --single-branch $DEPLOY_REPO . || (git init && git remote add -t BRANCH origin $DEPLOY_REPO)
+- npm run build
+- rm -Rf src conf
+- cp dist/* .
+- git add -A .
+- git commit -m 'ATUALIZA SITE'
+- git branch -m BRANCH
+- git push -q -u origin BRANCH
+
 deploy:
   provider: npm
   skip_cleanup: true
-  email: joseph.luccisano@gmail.com
+  email: josetelesmaciel@gmail.com
   on:
     tags: true
   api_key:
