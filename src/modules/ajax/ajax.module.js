@@ -1,9 +1,9 @@
 import angular from "angular";
-import Ajax from "./Ajax.model";
+import AjaxModel from "./Ajax.model";
 
 const AjaxModuleName = "buscador.ajax";
 
 angular.module(AjaxModuleName, []);
-angular.module(AjaxModuleName).factory("Ajax", Ajax);
+angular.module(AjaxModuleName).factory("AjaxModel", AjaxModel);
 
 export default AjaxModuleName;

@@ -1,11 +1,11 @@
 import SaraivaBookAdapter from "../adapters/SaraivaBookAdapter";
 
-const SearchModel = (Ajax) => {
+const SearchModel = (ComicsApiModel) => {
 
     const _getBooks = (term = null) => {
         model.term = term;
         const _getPromiseUrlByPageNumber = (pageNumber) => `https://api.saraiva.com.br/collection/products/29235/137879/0/1/&s=_maisVendidos&l=72&p=${pageNumber}`;
-        const firstPromise = Ajax.get(_getPromiseUrlByPageNumber(1));
+        const firstPromise = ComicsApiModel.getComics(_getPromiseUrlByPageNumber(1));
 
         const onPromisesEnd = () => {
             model.pagesLoaded.push(model.currentPageNumber);
@@ -22,7 +22,7 @@ const SearchModel = (Ajax) => {
                 model.isLoading = true;
 
                 if(response.data.page +1 <= model.lastPageNumber) {
-                    Ajax.get(_getPromiseUrlByPageNumber(response.data.page + 1)).then(onPromisesSuccess).finally(onPromisesEnd);
+                    ComicsApiModel.getComics(_getPromiseUrlByPageNumber(response.data.page + 1)).then(onPromisesSuccess).finally(onPromisesEnd);
                 } else {
                     model.isLoading = false;
                 }

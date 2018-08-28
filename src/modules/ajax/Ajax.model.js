@@ -1,4 +1,4 @@
-const Ajax = function Ajax($http) {
+const AjaxModel = function Ajax($http) {
     function get (url, params) {
         if (!params) {
             params = {};
@@ -15,4 +15,4 @@ const Ajax = function Ajax($http) {
     };
 };
 
-export default Ajax;
+export default AjaxModel;
