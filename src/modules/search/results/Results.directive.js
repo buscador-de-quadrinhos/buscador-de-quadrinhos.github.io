@@ -6,6 +6,7 @@ const ResultsDirective = () => {
         scope: {},
         restrict: "E",
         controllerAs: "vc",
+        replace: true,
         bindToController: true,
         controller: "ResultsDirectiveController",
         template: ResultsDirectiveTemplate

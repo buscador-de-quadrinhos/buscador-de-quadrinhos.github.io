@@ -9,6 +9,7 @@ const BookBoxDirective = function BookBoxDirective (){
         },
         template: BookBoxTemplate,
         restrict: "E",
+        replace: true,
         scope: {
             book: "=book"
         }

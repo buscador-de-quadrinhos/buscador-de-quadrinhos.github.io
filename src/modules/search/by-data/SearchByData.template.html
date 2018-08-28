@@ -1,33 +1,42 @@
 <section>
-<form name="searchForm">
-<div class="field is-horizontal" data-ng-model-options="{ debounce: 600 }">
-  <div class="field has-addons is-horizontal">
-    <div class="control" style="width: 100%;">
-      <input list="names" data-ng-disabled="vc.vm.isLoading" type="text" class="input is-medium" placeholder="Procure por nome, descrição ou nome do autor." data-ng-model="vc.vm.filterData.searchValue" name="comicsBookName">
-      <datalist id="names">
-        <option value="{{ name }}" data-ng-repeat="name in vc.vm.dataList.name">
-      </datalist>
+  <form name="searchForm">
+    <div class="field is-horizontal" data-ng-model-options="{ debounce: 300 }">
+      <div class="field has-addons is-horizontal">
+        <div class="control" style="width: 100%;">
+          <input list="names"
+                 data-ng-disabled="vc.vm.isLoading" style="padding-right: 0;"
+                 type="text" class="input is-medium" placeholder="Busque Quadrinhos"
+                 data-ng-model="vc.vm.term"
+                 minlength="3"
+                 name="comicsBookName">
+          <datalist id="names">
+            <option value="{{ name }}" data-ng-repeat="name in vc.vm.dataList.name">
+          </datalist>
+        </div>
+        <div class="control">
+          <button  class="button is-link is-medium"
+                   style="padding-left: 5px; padding-right: 5px;"
+                   data-ng-click="vc.goToSearch()">
+            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: block;height: 100%;fill: #fff;"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="control">
-      <button  class="button is-link is-medium"
-               data-ng-click="vc.vm.search()"
-               data-ng-disabled="vc.vm.isLoading || searchForm.$pristine">&#x1F50E;</button>
+    <div>
+      <button class="button is-info"
+              data-ng-click="vc.goToResults()">Pesquisar</button>
+      <a class="button is-light"
+              data-ui-sref="listAll" >Mostrar tudo</a>
     </div>
-  </div>
-</div>
-  <div class="control">
-    <div class="tags has-addons">
-      <span class="tag">Ignorar filtro</span>
-      <span class="tag"
-            data-ng-class="vc.vm.shouldIgnoreFilters ? 'is-success' : 'is-danger'"
-            data-ng-click="vc.vm.shouldIgnoreFilters = !vc.vm.shouldIgnoreFilters">
-        {{vc.vm.shouldIgnoreFilters ? 'ON' : 'OFF' }}
-      </span>
-    </div>
-  </div>
-<div>
+  </form>
 
+  <div style="margin-top: 80px;" data-ng-if="vc.vm.suggestions.length > 0">
+      <p class="subtitle is-6" style="margin-bottom: 10px">Sugestões</p>
+      <div class="tags">
+        <span class="tag is-light"
+              data-ui-sref="results({term: suggestion })"
+              data-ng-repeat="suggestion in vc.vm.suggestions">{{ suggestion }}</span>
+      </div>
+  </div>
 
-</div>
-</form>
 </section>

@@ -2,7 +2,8 @@ import SaraivaBookAdapter from "../adapters/SaraivaBookAdapter";
 
 const SearchModel = (Ajax) => {
 
-    const search = () => {
+    const _getBooks = (term = null) => {
+        model.term = term;
         const _getPromiseUrlByPageNumber = (pageNumber) => `https://api.saraiva.com.br/collection/products/29235/137879/0/1/&s=_maisVendidos&l=72&p=${pageNumber}`;
         const firstPromise = Ajax.get(_getPromiseUrlByPageNumber(1));
 
@@ -33,11 +34,21 @@ const SearchModel = (Ajax) => {
         firstPromise.finally(onPromisesEnd);
     };
 
+    const search = (term = null) => {
+        model.shouldShowAllBooks = false;
+        _getBooks(term);
+    };
+
+    const showAll = () => {
+        model.shouldShowAllBooks = true;
+        _getBooks();
+    };
+
     const filterByData = (book) => {
-        return model.shouldIgnoreFilters ? true : [
-            model.filterData.searchValue === null ? false : book.name.toLowerCase().indexOf(model.filterData.searchValue.toLowerCase()) !== -1,
-            model.filterData.searchValue === null ? false : book.description.toLowerCase().indexOf(model.filterData.searchValue.toLowerCase()) !== -1,
-            model.filterData.searchValue === null ? false : book.authorsNames.some(authorName => authorName.toLowerCase().indexOf(model.filterData.searchValue.toLowerCase()) !== -1)
+        return model.shouldShowAllBooks ? true : [
+            model.term === null ? false : book.name.toLowerCase().indexOf(model.term.toLowerCase()) !== -1,
+            model.term === null ? false : book.description.toLowerCase().indexOf(model.term.toLowerCase()) !== -1,
+            model.term === null ? false : book.authorsNames.some(authorName => authorName.toLowerCase().indexOf(model.term.toLowerCase()) !== -1)
         ].some(condition => condition);
     };
 
@@ -49,6 +60,14 @@ const SearchModel = (Ajax) => {
         "Listando boas ofertas ..."
     ];
 
+    const stopLoading = () => {
+        model.isLoadingStopped = true;
+    };
+
+    const resumeLoading = () => {
+        model.isLoadingStopped = false;
+    };
+
     const loadingMessage = () => {
         return loadingPercentage() === 100 ? "Busca finalizada" : loadingSentences[Math.floor(loadingPercentage() / 100 * loadingSentences.length)];
     };
@@ -57,26 +76,36 @@ const SearchModel = (Ajax) => {
 
     const model = {
         pagesLoaded: [],
-        filterData: {
-            searchValue: null
-        },
         lastPageNumber: 1,
         isLoading: false,
         currentPageNumber: 1,
         books: [],
-        shouldIgnoreFilters: false,
+        term: null,
         hasStartedLoading: false,
+        shouldShowAllBooks: false,
+        isLoadingStopped: false,
+        suggestions: [
+            "Desafio Infinito",
+            "Uma irmã",
+            "Akira",
+            "Demolidor",
+            "Bendis, Michael",
+            "Snoopy"
+        ],
         dataList: {
             name: [
                 "Lobo solitário",
                 "Homem-Aranha",
-                "Demolidor",
+                "Maus",
                 "Bendis, Michael",
                 "King, Tom",
                 "Batman",
                 "Vingadores"
             ]
         },
+        resumeLoading: resumeLoading,
+        stopLoading: stopLoading,
+        showAll: showAll,
         filterByData: filterByData,
         loadingPercentage: loadingPercentage,
         loadingMessage: loadingMessage,

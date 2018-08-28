@@ -1,11 +1,10 @@
 const BuscadorModuleName = "buscador";
 import angular from "angular";
-import AjaxModuleName from "./modules/ajax/ajax.module";
-import BookBoxModuleName from "./modules/book-box/book-box.module";
 import HomeModuleName from "./pages/home/home.module";
+import ResultsModuleName from "./pages/results/results.module";
 import "./index.scss";
 
-angular.module(BuscadorModuleName, [AjaxModuleName, BookBoxModuleName, HomeModuleName]);
+angular.module(BuscadorModuleName, [HomeModuleName, ResultsModuleName]);
 
 const IndexController = () => {
     const vc = this; // eslint-disable-line no-unused-vars

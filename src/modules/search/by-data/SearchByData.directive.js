@@ -6,6 +6,7 @@ const SearchByDataDirective = () => {
         scope: {},
         restrict: "E",
         controllerAs: "vc",
+        replace: true,
         controller: "SearchByDataController",
         bindToController: true
     };
