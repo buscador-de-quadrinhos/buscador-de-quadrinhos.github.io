@@ -114,5 +114,6 @@ const SearchModel = (ComicsApiModel) => {
 
     return model;
 };
+SearchModel.$inject = ["ComicsApiModel"];
 
 export default SearchModel;

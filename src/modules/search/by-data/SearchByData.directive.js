@@ -11,5 +11,5 @@ const SearchByDataDirective = () => {
         bindToController: true
     };
 };
-
+SearchByDataDirective.$inject = [];
 export default SearchByDataDirective;

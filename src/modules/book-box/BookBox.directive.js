@@ -15,5 +15,5 @@ const BookBoxDirective = function BookBoxDirective (){
         }
     };
 };
-
+BookBoxDirective.$inject = [];
 export default BookBoxDirective;

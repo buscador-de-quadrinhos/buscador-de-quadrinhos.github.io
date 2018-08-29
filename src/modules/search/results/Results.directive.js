@@ -12,5 +12,6 @@ const ResultsDirective = () => {
         template: ResultsDirectiveTemplate
     };
 };
+ResultsDirective.$inject = [];
 
 export default ResultsDirective;

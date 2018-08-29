@@ -15,4 +15,6 @@ const AjaxModel = function Ajax($http) {
     };
 };
 
+AjaxModel.$inject = ["$http"];
+
 export default AjaxModel;
