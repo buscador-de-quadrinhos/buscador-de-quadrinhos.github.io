@@ -2,5 +2,5 @@
 
 rm app.* index.html vendor.*.js
 npm run build
+cp dist/* .
 git add app.* index.html vendor.*.js
-git commit -m "SEM-ISSUE - FAZ DEPLOY"
