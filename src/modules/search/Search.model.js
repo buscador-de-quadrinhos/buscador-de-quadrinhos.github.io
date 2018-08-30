@@ -4,7 +4,7 @@ const SearchModel = (ComicsApiModel) => {
 
     const _getBooks = (term = null) => {
         model.term = term;
-        const _getPromiseUrlByPageNumber = (pageNumber) => `https://api.saraiva.com.br/collection/products/29235/137879/0/1/&s=_maisVendidos&l=72&p=${pageNumber}`;
+        const _getPromiseUrlByPageNumber = (pageNumber) => `https://api.saraiva.com.br/collection/products/29097/137879/0/1/&l=72&p=${pageNumber}`;
         const firstPromise = ComicsApiModel.getComics(_getPromiseUrlByPageNumber(1));
 
         const onPromisesEnd = () => {
